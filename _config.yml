@@ -1,3 +1,22 @@
 theme: jekyll-theme-slate
 title: Welcome to Yong Lai's studio!
 description: This is my workshop!
+collections:
+    authors:
+        output: true
+
+defaults:
+    - scope:
+        path: ""
+        type: "author"
+      values:
+        layout: "author"
+    - scope:
+        path: ""
+        type: "posts"
+      values:
+        layout: "post"
+    - scope:
+        path: ""
+      values:
+        layout: "default"
