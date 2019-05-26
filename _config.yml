@@ -1,6 +1,6 @@
 theme: jekyll-theme-cayman
 title: Welcome to Yong Lai's Studio!
-description: This is my workshop!
+description: Please feel free to look around my workshop!
 collections:
     authors:
         output: true
