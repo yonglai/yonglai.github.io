@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { PILLARS } from '../content.config';
+
+const posts = (await getCollection('posts', (p) => !p.data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+---
+<Base title="Yong Lai">
+  <h1>Running AI systems in production, with measurements</h1>
+  <p class="lede">
+    I'm Yong, an engineer working on inference serving, MLOps and AI platforms.
+    Every post makes one claim, shows the numbers behind it, and says what the numbers don't show.
+  </p>
+  {posts.length === 0 && <p class="meta">First posts coming soon.</p>}
+  <ul class="posts">
+    {posts.map((p) => (
+      <li>
+        <a class="title" href={`/posts/${p.id}/`}>{p.data.title}</a>
+        <div class="meta">{fmt(p.data.date)}<span class="pill">{PILLARS[p.data.pillar]}</span></div>
+        <p>{p.data.description}</p>
+      </li>
+    ))}
+  </ul>
+</Base>

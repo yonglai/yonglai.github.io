@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+interface Props { title: string; description?: string }
+const { title, description = 'Notes on running AI systems in production, with measurements.' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const full = title === 'Yong Lai' ? title : `${title} · Yong Lai`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{full}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title="Yong Lai" href="/rss.xml" />
+    <meta property="og:title" content={full} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <header class="site">
+      <a class="brand" href="/">Yong Lai</a>
+      <nav>
+        <a href="/">Posts</a>
+        <a href="/about/">About</a>
+        <a href="/rss.xml">RSS</a>
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer class="site">
+      <a href="https://github.com/yonglai">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/yonglai">LinkedIn</a>
+    </footer>
+  </body>
+</html>
