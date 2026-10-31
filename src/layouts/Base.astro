@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 interface Props { title: string; description?: string }
-const { title, description = 'Notes on running AI systems in production, with measurements.' } = Astro.props;
+const { title, description = 'Notes on running AI systems in production: what works, what breaks, and why.' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const full = title === 'Yong Lai' ? title : `${title} · Yong Lai`;
 ---

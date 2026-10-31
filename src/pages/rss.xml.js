@@ -6,7 +6,7 @@ export async function GET(context) {
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return rss({
     title: 'Yong Lai',
-    description: 'Running AI systems in production, with measurements.',
+    description: 'Running AI systems in production: what works, what breaks, and why.',
     site: context.site,
     items: posts.map((p) => ({
       title: p.data.title,

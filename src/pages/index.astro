@@ -8,10 +8,10 @@ const posts = (await getCollection('posts', (p) => !p.data.draft))
 const fmt = (d: Date) => d.toISOString().slice(0, 10);
 ---
 <Base title="Yong Lai">
-  <h1>Running AI systems in production, with measurements</h1>
+  <h1>Running AI systems in production: what works, what breaks, and why</h1>
   <p class="lede">
     I'm Yong, an engineer working on inference serving, MLOps and AI platforms.
-    Every post makes one claim, shows the numbers behind it, and says what the numbers don't show.
+    Every post makes one claim, shows the evidence behind it, and says what that evidence doesn't cover.
   </p>
   {posts.length === 0 && <p class="meta">First posts coming soon.</p>}
   <ul class="posts">

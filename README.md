@@ -1,6 +1,6 @@
 # yonglai.github.io
 
-My engineering blog: running AI systems in production, with measurements.
+My engineering blog: running AI systems in production: what works, what breaks, and why.
 
 ## Writing workflow
 
@@ -12,8 +12,9 @@ My engineering blog: running AI systems in production, with measurements.
 ## Post rules
 
 - One claim per post, stated in the first two paragraphs.
-- Numbers come with variance (3+ runs), hardware, and versions.
-- Every post links the repo and exact commit that produced its numbers (`repo:` in frontmatter).
+- Every claim is backed by evidence a reader can check: data, a trace, a runnable repo, or a worked example. The kind depends on the pillar (see below).
+- Performance claims come with variance (3+ runs), hardware, and versions.
+- If a post has code, link the repo and exact commit (`repo:` in frontmatter).
 - Every post has a "What this does not show" section.
 - Code and raw data live in experiment repos; this repo holds only writing and small figures.
 
@@ -21,6 +22,16 @@ My engineering blog: running AI systems in production, with measurements.
 
 `serving` · `mlops` · `agent-infra` · `agentic-ai` · `platform`
 (labels are in `src/content.config.ts`).
+
+The kind of evidence depends on the pillar:
+
+| Pillar        | Typical evidence                                                                   |
+| ------------- | ---------------------------------------------------------------------------------- |
+| `serving`     | Benchmarks with variance, profiles, traces                                         |
+| `mlops`       | A working setup, its metrics, a failure I caused and how I detected it             |
+| `agent-infra` | Traces of real agent runs, latency and cost per task, failure logs                 |
+| `agentic-ai`  | Eval results, a failure taxonomy from actual runs                                  |
+| `platform`    | Design tradeoffs with a checked cost or failure model, incident-style walkthroughs |
 
 ## One-time deploy setup
 
