@@ -1,6 +1,6 @@
 ---
 title: "Three wrong answers, three checks: Bedrock's grounding tiers against a claim-level verifier"
-description: "Bedrock's default grounding check passed all three wrong answers from my insurance agent. The Standard tier caught one, a claim-level checker caught all three, and each had a cost. Injected errors made every check look better than it was."
+description: "Bedrock's default grounding check passed all three wrong answers from my insurance agent. The Standard tier caught one, a claim-level checker caught all three, and each had a cost. Injected errors made the two Bedrock grounding checks look better than they were."
 date: 2026-11-02
 pillar: agentic-ai
 tags: [bedrock, guardrails, rag, evaluation, hallucination, agents]
@@ -12,7 +12,7 @@ _Measured October to November 2026 · Claude Haiku 4.5 on Amazon Bedrock · a fi
 
 ## The claim
 
-An answer can be supported by the retrieved sources and still be wrong, because a true figure is attached to the wrong plan, person or service. In my agent, three wrong answers passed Bedrock's default (**Classic**) contextual grounding check at scores of **0.96 to 0.99**. The **Standard** tier caught one of the three. A second model call that checks each claim against the sources caught all three, but it also flagged 1 of the 26 answers I had judged correct, and the correct re-run of Q501. On errors I injected on purpose, every check looked better than it did on the real ones.
+An answer can be supported by the retrieved sources and still be wrong, because a true figure is attached to the wrong plan, person or service. In my agent, three wrong answers passed Bedrock's default (**Classic**) contextual grounding check at scores of **0.96 to 0.99**. The **Standard** tier caught one of the three. A second model call that checks each claim against the sources caught all three, but it also flagged 1 of the 26 answers I had judged correct, and the correct re-run of Q501. On errors I injected on purpose, the two Bedrock grounding checks looked much better than they did on the real ones: Classic caught 18 of 31 against 0 of 3, and Standard caught 30 of 31 against 1 of 3.
 
 ## Setup
 
