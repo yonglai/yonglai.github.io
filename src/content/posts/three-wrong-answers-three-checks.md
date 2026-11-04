@@ -104,6 +104,13 @@ Same documents, same verifier, same temperature: on the stored wrong answer it c
 
 Two of my "false" flags exposed a contradiction in my own documents. That is a defect to fix at the source ("psychologists, social workers and psychotherapists: 80% on both plans" in the overview). I have not made that change or re-measured after it.
 
+## Next steps
+
+1. **Fix the documents first.** Two of the verifier's flags came from a contradiction in my own policy files. Consistent sources should remove that kind of false flag.
+2. **Treat a verifier flag as "retry once, then hand off to a person", not "block the answer".** My agent already has a retry and a human handoff, so a false flag would cost one retry or one handoff instead of a lost answer. For figures a customer will act on, I would accept that cost.
+3. **Do not gate the verifier behind Standard grounding.** "Both must agree" missed two of the three real errors, and "either flags it" caught nothing the verifier did not. The real choice is latency: Standard took a median of 512 ms against about 1.2 s for the verifier.
+4. **Measure the whole loop on questions the agent has not seen.** Track how often answers are flagged, how often the retry fixes them, how many go to a person, and the added latency.
+
 ## What this does not show
 
 - **Three real errors.** Two questions, three answers. The numbers say how the checks behaved on these, not how often they catch real mistakes.
