@@ -1,5 +1,5 @@
 ---
-title: "A version guard that checked the compiler, not the headers"
+title: "FlashInfer's version guard checked the compiler, not the headers"
 description: "Why vLLM crashed at sampler warmup on my machine, how a FlashInfer guard picked a CUB API using the wrong version, and why the fix was deleting nine lines instead of repairing the guard."
 date: 2026-11-03
 pillar: serving
