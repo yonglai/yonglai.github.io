@@ -1,16 +1,16 @@
 ---
 title: "A passing /health check doesn't mean your vLLM engine can decode"
-description: "I froze the engine of a single-GPU vLLM pod on k3s. The default health check stayed green and users hung for 108 seconds. A dummy-decode readiness probe pulled the pod out in 37."
+description: "I froze the engine of a single-GPU vLLM pod on k3s. The default health check stayed green and the pod kept receiving traffic until I thawed it 108 seconds later. A dummy-decode readiness probe took it out of rotation after 37."
 date: 2026-11-08
 pillar: mlops
 tags: [vllm, kubernetes, readiness-probe, k3s, mlops]
 repo: https://github.com/yonglai/inference-track/tree/d805a4bd003ec7ef5b1e13d5afda1475a389a03b
-draft: true
+draft: false
 ---
 
 ## The claim
 
-vLLM's `/health` endpoint tells you the API server is alive, not that the engine can still produce tokens. When I froze the engine process, `/health` kept returning 200 and Kubernetes kept sending traffic to the pod. A readiness probe that runs a real 4-token completion removed the pod from the Service after 37 seconds. I also expected it to catch a broken compiler toolchain, and it didn't need to: vLLM's own startup already does.
+vLLM's `/health` endpoint tells you the API server is alive, not that the engine can still produce tokens. When I froze the engine process, `/health` kept returning 200 and Kubernetes kept sending traffic to the pod. A readiness probe that runs a real 4-token completion removed the pod from the Service after 37 seconds. I also expected it to catch a broken compiler toolchain. It didn't need to: with the prebuilt kernels a missing compiler is harmless, and without them vLLM's own startup crashes the pod before it ever reports ready.
 
 ## Setup
 
